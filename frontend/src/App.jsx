@@ -1,15 +1,31 @@
 import './App.css';
-import { useRef } from 'react';
+import { useState } from 'react';
+import Footer from './Footer.jsx';
 
 function App() {
-  const ref = useRef()
+  const [count, setCount] = useState(0);
+
+  const up = () => {
+
+    setCount((count + 1) );
+  }
+
+  const down = () => {
+    setCount((count - 1) );
+  }
+
+  const reset = () => {
+    setCount(0);
+  }
+ 
 
   return (
     <>
-      <input type="text" ref={ref} /> 
-      <button onClick={() => ref.current.focus()}>
-        button
-      </button>
+      <p>{count}</p>
+    <button onClick={up}>+</button>
+    <button onClick={down}>-</button>
+    <button onClick={reset}>reset</button>
+    <Footer/>
     </>
   );
 }
